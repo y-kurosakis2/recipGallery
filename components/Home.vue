@@ -1,7 +1,7 @@
 <template>
   <transition>
   <div class="home">
-    <!-- <home-title /> -->
+    <home-title />
     <div class="topAnimation">
       <top />
     </div>
@@ -52,9 +52,9 @@ export default {
   background-size: cover;
   background-color: #fceaea;
   background-attachment: fixed;
-  /* animation: fadeIn 3s ease-in-out;
+  animation: fadeIn 3s ease-in-out;
   animation-delay: 5s;
-  animation-fill-mode: forwards; */
+  animation-fill-mode: forwards;
 }
 
 .skip {
@@ -66,14 +66,14 @@ body {
   background-attachment: fixed;
 }
 
-/* @keyframes fadeIn {
+@keyframes fadeIn {
   0%{
     opacity: 0;
   }
   100%{
     opacity: 1;
   }
-} */
+}
 
 
 </style>
