@@ -31,7 +31,7 @@
       <div class="center">
        
         
-        <br>
+        <topic />
        
       </div>
           
@@ -46,6 +46,7 @@
 import ImageCard from './ImageCard.vue';
 import HeaderTab from './HeaderTab.vue';
 import TopCarousel from './TopCarousel.vue';
+import Topic from './Topic.vue';
 // import ImagePic from './ImagePic.vue';
 
 
