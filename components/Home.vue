@@ -45,7 +45,7 @@ export default {
 }
 
 .topAnimation {
-  /* opacity: 0; */
+  opacity: 0;
   width: 100%;
   background-image: url('/img/dot.png');
   background-repeat: no-repeat;

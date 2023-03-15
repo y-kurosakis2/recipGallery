@@ -2,7 +2,7 @@
   <div class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center sm:pt-0">
 
     <div class="page">
-      <header-tab />
+      <header-tab id="show-header"/>
       <!-- <navbar></navbar> -->
       <!-- <div class="photo-img"> -->
       
@@ -51,23 +51,44 @@ import TopCarousel from './TopCarousel.vue';
 
 
 export default {
-  components: { ImageCard, HeaderTab, TopCarousel },
-          
-    data () {
-            return {
-              isActive: true,
-              hasError: false,
-              color: ['#5ba19b', '#fceaea', '#f5d9d9', '#fbead1']
-             
-            }
-          },
-        }
+  components: { ImageCard, HeaderTab, TopCarousel, Topic },     
+  data () {
+    return {
+      isActive: true,
+      hasError: false,
+      color: ['#5ba19b', '#fceaea', '#f5d9d9', '#fbead1']
+    }
+  },
+  mounted() {
+  const fh = document.getElementById('show-header')
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 100) {
+      fh.classList.add('is-show')
+    } else {
+      fh.classList.remove('is-show')
+    }
+  })
+ },
+}
 
 </script>
 
 <style>
 .page {
   width: 100%;
+}
+
+#show-header {
+  position: fixed;
+  top: -70px;  
+  width: 100%;
+  text-align: center;
+  transition: .5s;
+}
+
+#show-header.is-show {
+  z-index: 19;
+  top: 0;
 }
 
 .sub-title {

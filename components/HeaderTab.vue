@@ -1,6 +1,6 @@
 <template>
   <div>
-  <b-navbar toggleable="lg" type="dark" class="nav">
+  <b-navbar toggleable="lg" style="color: brown;" class="nav" >
     <b-navbar-brand href="/" class="tab-name">なしのお菓子部屋</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -67,28 +67,13 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .nav {
-  background-color: #b18ea6;
+  color: brown;
 }
 
 .tab-name {
   font-family: 'Pacifico', 'Homemade Apple', cursive;
   font-size: 20px;
-}
-
-.topAnimation {
-  opacity: 0;
-  animation: fadeIn 3s ease-in-out;
-  animation-delay: 5s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fadeIn {
-  0%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 1;
-  }
+  color: brown;
 }
 
 
