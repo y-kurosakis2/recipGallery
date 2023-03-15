@@ -39,14 +39,13 @@
       <div class="line" />
     </div>
       <b-card-group deck class="image-block">
-        <div v-for="sweets in sweetsPic" :key="sweets.index">
+        <div v-for="art in article" :key="art.index">
           <b-card
-              title=""
-              :img-src="sweets"
+              :img-src="art.picPath"
               img-alt="Image"
               overlay
               class="sweets-pic"
-              @click="showModal(sweets)"
+              @click="showModal(art)"
           >
               
           </b-card>
@@ -69,12 +68,13 @@ export default {
   //   return article
   // },
  async mounted() {
-  const art = await this.$content('sweetsModal/sweets1').fetch()
+  // contentからmdを取り出す（順番は適当）
+  const art = await this.$content('sweetsModal').fetch()
+  console.log(art)
+  // 作成順とかに並び替えたい
   this.article = art
-  this.title = art.sweetsName
-  this.id = art.id
-  this.points = art.points
-  this.sweetsPic = ['/img/weekend_citron.jpg', '/img/ねこクッキー.jpg', '/img/クッキー缶.jpg', '/img/抹茶クッキー.jpg', '/img/抹茶クッキー.jpg']
+  this.article = art.sort(this.compareCreatedDate)
+  console.log(this.article)
  },
 
 data () {
@@ -93,10 +93,13 @@ data () {
   }
 },
 methods:{
-  showModal(path) {
+  showModal(art) {
     this.$refs['my-modal'].show()
     console.log('aaaa')
-    this.imgPath = path
+    this.imgPath = art.picPath
+    this.title = art.title
+    this.points = art.points
+    this.id = art.id
   },
   hideModal() {
       this.$refs['my-modal'].hide()
@@ -115,6 +118,15 @@ methods:{
     }
     this.$store.commit('recip/setRecipInfo', this.recipInfo)
     this.$router.push('/recip')
+  },
+  compareCreatedDate(a, b) {
+    if (a.createdAt > b.createdAt) {
+      return 1
+    }
+    if (a.createdAt < b.createdAt) {
+      return -1
+    }
+    return 0
   }
 }
 }
@@ -123,14 +135,14 @@ methods:{
 <style scoped>
 .image-card {
   width: 100%;
-  height: 100%;
+  height: 1100px;
 }
 
 
 .modal-block {
   width: 100%;
-  min-height: 700px;
-  background-image: url('/img/kumo1.png');
+  height: 1108px;
+  background-image: url('/img/kumo6.png');
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
