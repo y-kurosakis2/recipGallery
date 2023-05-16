@@ -173,7 +173,7 @@ methods:{
 .title-block {
   width: 20rem;
   text-align: center;
-  margin-top: 172px;
+  margin-top: -266px;
   font-size: 45px;
   color: brown;
   font-weight: bold;

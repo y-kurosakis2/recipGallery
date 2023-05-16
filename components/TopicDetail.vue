@@ -1,97 +1,97 @@
 <template>
-  <div class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center sm:pt-0">
+  <div class="recip">
 
     <div class="page">
-      <header-tab id="show-header"/>
-      <!-- <navbar></navbar> -->
-      <!-- <div class="photo-img"> -->
+      <header-tab />
+    </div>
+
+      <div class="main-container">
+        <!-- <b-img width="500px" :src="recipInfo.img" alt="image" />
+        <b-card class="ingredients">
+          {{ recipInfo.ingredients }}
+        </b-card>
+        <b-card class="energy">
+          {{ recipInfo.energy }}
+        </b-card>
+        <sidebar v-if="sidebar"/> -->
+
+      </div>
+  
       
-         <!-- <carousel-fade-in /> -->
-         <top-carousel />
-
-         <!-- <div class="sub-title" >
-          <top-carousel>
-          なにを作りましょう？
-        </top-carousel>
-         </div> -->
-         
-      </div>
-      <br>
-      <div class="center">
-        <image-card />
-      </div>
-      <div class="center">
-        <topic />
-
-      </div>
   </div>
   
 </template>
 <script>
-
-
-// import CarouselFadeIn from './CarouselFadeIn.vue';
-import ImageCard from './ImageCard.vue';
 import HeaderTab from './HeaderTab.vue';
-import TopCarousel from './TopCarousel.vue';
-import Topic from './Topic.vue';
+import Sidebar from './Sidebar.vue';
 // import ImagePic from './ImagePic.vue';
 
 
 
 export default {
-  components: { ImageCard, HeaderTab, TopCarousel, Topic },     
+  components: { HeaderTab, Sidebar},
+          
   data () {
     return {
-      isActive: true,
-      hasError: false,
-      color: ['#5ba19b', '#fceaea', '#f5d9d9', '#fbead1']
-    }
+      imagePath: '',      
+      sidebar: true,
+      }
   },
+
+  // computed: {
+  //   recipInfo() {
+  //     return this.$store.state.recip.recipInfo
+  //   }
+  // },
   mounted() {
-  const fh = document.getElementById('show-header')
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 100) {
-      fh.classList.add('is-show')
-    } else {
-      fh.classList.remove('is-show')
+    console.log('sidebar')
+    const weightSize = window.innerWidth
+    if (weightSize > 1600) {
+      return this.sidebar = true
     }
-  })
- },
+    return this.sidebar = false
+  }
 }
 
 </script>
 
 <style>
+.recip {
+  width: 100%;
+  height: 100vh;
+  background-image: url('/img/dot2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fceaea;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
 .page {
   width: 100%;
 }
 
-#show-header {
-  position: fixed;
-  top: -70px;  
+.main-container{
   width: 100%;
-  text-align: center;
-  transition: .5s;
-}
-
-#show-header.is-show {
-  z-index: 19;
-  top: 0;
-}
-
-.sub-title {
-  width: 100%;
-  height: 500px;
-  font-family: "Zen Maru Gothic", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", ヒラギノ角ゴシック, "Hiragino Sans", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-}
-
-.center{
-  width: 100vw;
-  margin: auto;
+  margin: 30px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.ingredients {
+  width: 30%;
+  margin: 20px;
+  border: dotted;
+  border-color: #f5d9d9;
+  border-width: 4px;
+  border-radius: 2rem;
+}
+
+.energy {
+  width: 20%;
+  margin: 20px;
+  border-color: #f5d9d9;
+  border-width: 2px;
+  border-radius: 2rem;
 }
 
 .yokoretsu{

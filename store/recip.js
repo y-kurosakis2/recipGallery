@@ -21,6 +21,7 @@ export const getters = {
 
 export const mutations = {
   setRecipInfo(state, recipInfo) {
+    console.log("aaa")
     state.recipInfo = recipInfo
   },
 
