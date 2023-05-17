@@ -44,8 +44,8 @@ export default {
       swiperOptions: {
         centeredSlides: true,
         // speed: 1000,
-        // spaceBetween: 30,
-        // loop: false,
+        spaceBetween: 30,
+        // loop: true,
         // autoplay: {
         //   delay: 5000,
         //   disableOnInteraction: false
@@ -140,6 +140,11 @@ export default {
   width: 70%;
   height: 400px;
   margin-top: 0;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
 }
 
 
