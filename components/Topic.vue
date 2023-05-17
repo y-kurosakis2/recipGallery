@@ -8,18 +8,16 @@
       Topic
       <div class="line" />
     </div>
+    <div class="topic-slide">
       <swiper
-        class="swiper"
-        :options="swiperOptions"
-        navigation
-  >
+        :options="swiperOptions">
     <swiper-slide class="slide">
-      <b-img width="400px" height="300px" src="/img/weekend_citron.jpg" alt="citon" ></b-img>
+      <b-img width="600px" src="/img/weekend_citron.jpg" alt="citon" ></b-img>
     </swiper-slide>
-    <swiper-slide class="slide"><b-img width="400px" height="300px" src="/img/ねこクッキー.jpg" alt="citon" ></b-img></swiper-slide>
-    <swiper-slide class="slide"><b-img width="400px" height="300px" src="/img/weekend_citron.jpg" alt="citon" ></b-img></swiper-slide>
+    <swiper-slide class="slide"><b-img width="600px" src="/img/ねこクッキー.jpg" alt="citon" ></b-img></swiper-slide>
+    <swiper-slide class="slide"><b-img width="600px" src="/img/weekend_citron.jpg" alt="citon" ></b-img></swiper-slide>
   </swiper>
-
+</div>
   </div>
 
 
@@ -44,13 +42,14 @@ export default {
       title: '',
       points: '',
       swiperOptions: {
-        speed: 1000,
-        loop: true,
-        centerdSlides: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false
-        }
+        centeredSlides: true,
+        // speed: 1000,
+        // spaceBetween: 30,
+        // loop: false,
+        // autoplay: {
+        //   delay: 5000,
+        //   disableOnInteraction: false
+        // }
       }
     }
   },
@@ -130,6 +129,17 @@ export default {
   width: 230px;
   margin: 20px 10px;
   transition: .4s;
+}
+
+.swiper {
+  width: 100%;
+  height: 400px;
+}
+
+.topic-slide {
+  width: 70%;
+  height: 400px;
+  margin-top: 0;
 }
 
 
