@@ -1,38 +1,29 @@
 <template>
   <div class="top-carousel">
-    <!-- <div class="carousel-top"> -->
-      <!-- <div class="circle1" :style="{height: circleHeight}" /> -->
-      <div class="circle1" />
-      <div class="circle2" />
-      <b-carousel
-        id="carousel-fade"
-        fade
-        :interval="4000"
-        img-width="380"
-        class="carousel-top"
-        >
-        <div v-for="image,index in images1" :key="index">
-          <b-carousel-slide :img-src="image" rounded background="white">
-          </b-carousel-slide>
-        </div>
-      </b-carousel>
-
-      <b-carousel
-        id="carousel-fade"
-        fade
-        :interval="5500"
-        img-width="380"
-        class="carousel-center"
-        >
-        <div v-for="image, index in images1" :key="index">
-          <b-carousel-slide :img-src="image" rounded background="white">
-          </b-carousel-slide>
-        </div>
-      </b-carousel>
-
-    <!-- </div> -->
-
-    aaa
+    <div class="circle1" />
+    <div class="circle2" />
+    <b-carousel
+      id="carousel-fade"
+      fade
+      :interval="4000"
+      img-width="380"
+      class="carousel-top">
+      <div v-for="image,index in images1" :key="index">
+        <b-carousel-slide :img-src="image" rounded background="white">
+        </b-carousel-slide>
+      </div>
+    </b-carousel>
+    <b-carousel
+      id="carousel-fade"
+      fade
+      :interval="5500"
+      img-width="380"
+      class="carousel-center">
+      <div v-for="image, index in images1" :key="index">
+        <b-carousel-slide :img-src="image" rounded background="white">
+        </b-carousel-slide>
+      </div>
+    </b-carousel>
   </div>
   
 </template>

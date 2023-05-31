@@ -4,20 +4,29 @@
     <div class="page">
       <header-tab />
     </div>
+    <div class="title">
+      {{ topicInfo.title }}
+    </div>
 
-      <div class="main-container">
-        <!-- <b-img width="500px" :src="recipInfo.img" alt="image" />
-        <b-card class="ingredients">
-          {{ recipInfo.ingredients }}
-        </b-card>
-        <b-card class="energy">
-          {{ recipInfo.energy }}
-        </b-card>
-        <sidebar v-if="sidebar"/> -->
+    <div class="main-container">
+      <b-img width="500px" :src="topicInfo.picPath" alt="image" />
+      <b-card class="ingredients">
+        <div class="recip-sub-title">
+          材料
+        </div>
+        <div class="recip-content">
+         </div>
+      </b-card>
+      <b-card class="energy">
+        <div class="recip-sub-title">
+          栄養素
+        </div>
+        <div class="recip-content">
+          </div>
+      </b-card>
+      <sidebar v-if="sidebar"/>
 
-      </div>
-  
-      
+    </div>
   </div>
   
 </template>
@@ -35,6 +44,7 @@ export default {
     return {
       imagePath: '',      
       sidebar: true,
+      topicInfo: []
       }
   },
 
@@ -44,6 +54,8 @@ export default {
   //   }
   // },
   mounted() {
+    this.topicInfo = this.$store.state.topic.topicInfo
+    console.log(this.topicInfo)
     console.log('sidebar')
     const weightSize = window.innerWidth
     if (weightSize > 1600) {
@@ -111,172 +123,23 @@ export default {
   width: 100%;
 }
 
-.circles{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+.title {
+  margin: 10px 20px;
+  font-size: 30px;
+  font-family: 'Kaisei Opti', sans-serif;
 }
 
-.circles li{
-    position: absolute;
-    display: block;
-    list-style: none;
-    width: 20px;
-    height: 20px;
-    background: rgba(255, 200, 21, 0.301);
-    animation: animate 25s linear infinite;
-    bottom: -150px;
-    
+.recip-sub-title {
+  background: #dfefff;
+  box-shadow: 0px 0px 0px 5px #dfefff;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  font-family: 'Kaisei Opti', sans-serif;
 }
 
-.circles li:nth-child(1){
-    left: 25%;
-    width: 80px;
-    height: 80px;
-    animation-delay: 0s;
+.recip-content {
+  margin: 10px;
+  font-family: 'Zen Maru Gothic', sans-serif;
 }
-
-
-.circles li:nth-child(2){
-    left: 10%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 2s;
-    animation-duration: 12s;
-}
-
-.circles li:nth-child(3){
-    left: 70%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 4s;
-}
-
-.circles li:nth-child(4){
-    left: 40%;
-    width: 60px;
-    height: 60px;
-    animation-delay: 0s;
-    animation-duration: 18s;
-}
-
-.circles li:nth-child(5){
-    left: 65%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 0s;
-}
-
-.circles li:nth-child(6){
-    left: 75%;
-    width: 110px;
-    height: 110px;
-    animation-delay: 3s;
-}
-
-.circles li:nth-child(7){
-    left: 35%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 7s;
-}
-
-.circles li:nth-child(8){
-    left: 50%;
-    width: 25px;
-    height: 25px;
-    animation-delay: 15s;
-    animation-duration: 45s;
-}
-
-.circles li:nth-child(9){
-    left: 20%;
-    width: 15px;
-    height: 15px;
-    animation-delay: 2s;
-    animation-duration: 35s;
-}
-
-.circles li:nth-child(10){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
-}
-.circles li:nth-child(11){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
-}
-.circles li:nth-child(12){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
-}
-.circles li:nth-child(13){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
-}
-.circles li:nth-child(14){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
-}
-.circles li:nth-child(15){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
-}
-.circles li:nth-child(16){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
-}
-.circles li:nth-child(17){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
-}
-.circles li:nth-child(18){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
-}
-
-@keyframes animate {
-
-    0%{
-        transform: translateY(-10px) rotate(0deg);
-        opacity: 1;
-        border-radius: 0;
-    }
-
-    100%{
-        transform: translateY(-2000px) rotate(720deg);
-        opacity: 0;
-        border-radius: 50%;
-    }
-  }
 
 </style>

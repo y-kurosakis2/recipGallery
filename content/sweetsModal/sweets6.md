@@ -5,6 +5,7 @@ description: 'Empower your NuxtJS application with @nuxt/content module: write i
 id: 'idだよだよ'
 points: ['ポイントは', '丸々だよ']
 picPath: '/img/抹茶クッキー.jpg'
+numbr: 6
 ---
 
 料理の説明3

@@ -6,33 +6,23 @@
         <div class="modal-title">
           <div class="modal-totle-text">
           {{ title }}
+          </div>
         </div>
-        </div>
-        <!-- <div class="modal-image" > -->
-          <div class="d-flex">
+        <div class="d-flex">
           <b-img width="400px" height="300px" :src="imgPath" alt="image"/>
-          <div style="margin: 0 20px;">
-          <div style="font-weight: bold; font-size: 24px">おすすめポイント</div>
-          <div v-for="point in points" :key="point">
-          {{ point }}<br>
+          <div class="font-style" style="margin: 0 20px;">
+            <div class="point-style" style="font-size: 26px; font-family: 'Kaisei Opti',sans-serif;">おすすめポイント</div>
+            <div class="point-block">
+              <div v-for="point in points" :key="point">
+                {{ point }}<br>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
-        </div>
-          <!-- <h3>料理名</h3>
-          <h5>料理の説明</h5> -->
-          <!-- <div v-for="art in article" :key="art.index"> -->
-          <!-- <NuxtContent :document="article"></NuxtContent> -->
-          {{ id }}
-
-          <!-- {{ title }} -->
-        <!-- </div> -->
-        <!-- </div> -->
-        <b-button class="mt-3" variant="outline-success" block @click="goRecip(imgPath)"><i class="fas fa-star"></i>レシピへ</b-button>
+        <b-button class="mt-3" variant="outline-success" block @click="goRecip(recipInfo)"><i class="fas fa-star"></i>レシピへ</b-button>
         <b-button :pressed.sync="myFav" class="mt-2" variant="outline-warning" block><i class="fas fa-star"></i>お気に入り</b-button>
-      <!-- <b-button class="mt-2" block @click="hideModal">閉じる</b-button> -->
       </b-modal>
     </div>
-
   <div class="modal-block">
     <div class="title-block">
       Recip Gallery
@@ -46,14 +36,11 @@
               overlay
               class="sweets-pic"
               @click="showModal(art)"
-          >
-              
+          >   
           </b-card>
         </div>
       </b-card-group>
     </div>
-
-
   </div>
   
 </template>
@@ -100,6 +87,7 @@ methods:{
     this.title = art.title
     this.points = art.points
     this.id = art.id
+    this.recipInfo = art
   },
   hideModal() {
       this.$refs['my-modal'].hide()
@@ -109,21 +97,29 @@ methods:{
       // when the modal has hidden
       this.$refs['my-modal'].toggle('#toggle-btn')
   },
-  goRecip(path) {
-    this.recipInfo = {
-      img: path,
-      title: 'パウンドケーキ',
-      ingredients: '材料',
-      energy: '栄養素'
-    }
-    this.$store.commit('recip/setRecipInfo', this.recipInfo)
+  // goRecip(path) {
+  //   this.recipInfo = {
+  //     img: path,
+  //     title: 'パウンドケーキ',
+  //     ingredients: '材料',
+  //     energy: '栄養素'
+  //   }
+  goRecip(recipInfo) {
+    // this.recipInfo = {
+    //   img: path,
+    //   title: 'パウンドケーキ',
+    //   ingredients: '材料',
+    //   energy: '栄養素'
+    // }
+    this.$store.commit('recip/setRecipInfo', recipInfo)
+    console.log(recipInfo)
     this.$router.push('/recip')
   },
   compareCreatedDate(a, b) {
-    if (a.createdAt > b.createdAt) {
+    if (a.number > b.number) {
       return 1
     }
-    if (a.createdAt < b.createdAt) {
+    if (a.number < b.number) {
       return -1
     }
     return 0
@@ -136,6 +132,7 @@ methods:{
 .image-card {
   width: 100%;
   height: 1100px;
+  font-family: 'Kaisei Opti', sans-serif;
 }
 
 
@@ -168,6 +165,7 @@ methods:{
   justify-content: center;
   align-items: center;
   font-size: 26px;
+  font-family: 'Kaisei Opti', sans-serif;
 }
 
 .title-block {
@@ -189,6 +187,10 @@ methods:{
   margin-top: -59px;
 }
 
+.modal {
+  font-family: 'Segoe Print',sans-serif;
+}
+
 .image-block {
   margin-top: 310px;
   position: absolute;
@@ -202,6 +204,9 @@ methods:{
   background-repeat: no-repeat;
   background-size: cover;
 } */
+.font-style {
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
 
 .sweets-pic {
   width: 230px;
@@ -213,7 +218,31 @@ methods:{
   transform: scale(1.2);
   transition: 1s;
   z-index: 10;
+  cursor: pointer;
 }
 
+.point-style {
+  position: relative;
+  background: #dfefff;
+  box-shadow: 0px 0px 0px 5px #dfefff;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  color: #454545;
+}
+
+.point-style:after {
+  position: absolute;
+  content: '';
+  left: -7px;
+  top: -7px;
+  border-width: 0 0 15px 15px;
+  border-style: solid;
+  border-color: #fff #fff #a8d4ff;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.point-block {
+  padding: 20px 10px;
+}
 
 </style>
