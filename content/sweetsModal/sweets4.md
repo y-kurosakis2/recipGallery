@@ -7,7 +7,7 @@ points: ['ポイントは', '丸々だよ']
 picPath: '/img/抹茶クッキー.jpg'
 ingredients: '材料'
 energy: '栄養素'
-numbr: 4
+number: 4
 ---
 
 料理の説明3

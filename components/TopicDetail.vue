@@ -4,8 +4,15 @@
     <div class="page">
       <header-tab />
     </div>
+    <div class="topic-title-img">
+      <b-img :src="topicInfo.topicPath" class="topic-layer"/>
+      <div class="topic-cover"/>
+      <b-img :src="topicInfo.topicBackground" class="topic-background" />
+    </div>
     <div class="title">
-      {{ topicInfo.title }}
+      <div v-for="top in topicInfo.topicMessage" :key="top.index">
+        {{ top }}
+      </div>
     </div>
 
     <div class="main-container">
@@ -24,7 +31,6 @@
         <div class="recip-content">
           </div>
       </b-card>
-      <sidebar v-if="sidebar"/>
 
     </div>
   </div>
@@ -89,6 +95,35 @@ export default {
   display: flex;
 }
 
+
+.topic-background {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.topic-layer {
+  position: absolute;
+  width: 800px;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.topic-title-img {
+  width: 100%;
+  position: relative;
+}
+
+.topic-cover {
+  height: 400px;
+  width: 100%;
+  background: white;
+  opacity: 0.5;
+  position: absolute;
+}
+
 .ingredients {
   width: 30%;
   margin: 20px;
@@ -125,8 +160,11 @@ export default {
 
 .title {
   margin: 10px 20px;
-  font-size: 30px;
-  font-family: 'Kaisei Opti', sans-serif;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  align-items: center;
 }
 
 .recip-sub-title {
@@ -141,5 +179,7 @@ export default {
   margin: 10px;
   font-family: 'Zen Maru Gothic', sans-serif;
 }
+
+
 
 </style>
