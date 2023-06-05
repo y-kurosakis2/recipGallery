@@ -8,6 +8,7 @@ picPath: '/img/抹茶クッキー.jpg'
 ingredients: '材料'
 energy: '栄養素'
 number: 4
+topicNumber: 2
 ---
 
 料理の説明3

@@ -15,24 +15,25 @@
       </div>
     </div>
 
-    <div class="main-container">
-      <b-img width="500px" :src="topicInfo.picPath" alt="image" />
-      <b-card class="ingredients">
-        <div class="recip-sub-title">
-          材料
+      <div class="main-container">
+        <div v-for="recip in recips" :key="recip.index" class="recip-contents">
+          <b-img width="500px" :src="recip.picPath" alt="image" />
+          <b-card class="ingredients">
+            <div class="recip-sub-title">
+              材料
+            </div>
+            <div class="recip-content">
+            </div>
+          </b-card>
+          <b-card class="energy">
+            <div class="recip-sub-title">
+              栄養素
+            </div>
+            <div class="recip-content">
+            </div>
+          </b-card>
         </div>
-        <div class="recip-content">
-         </div>
-      </b-card>
-      <b-card class="energy">
-        <div class="recip-sub-title">
-          栄養素
-        </div>
-        <div class="recip-content">
-          </div>
-      </b-card>
-
-    </div>
+      </div>
   </div>
   
 </template>
@@ -50,19 +51,18 @@ export default {
     return {
       imagePath: '',      
       sidebar: true,
-      topicInfo: []
+      topicInfo: [],
+      recips: [],
       }
   },
 
-  // computed: {
-  //   recipInfo() {
-  //     return this.$store.state.recip.recipInfo
-  //   }
-  // },
   mounted() {
-    this.topicInfo = this.$store.state.topic.topicInfo
+    const topicInfo = this.$store.state.topic.topicInfo
+    const recipInfo = this.$store.state.recip.recipInfo
+    this.topicInfo = topicInfo
     console.log(this.topicInfo)
-    console.log('sidebar')
+    this.recips = recipInfo.filter((info) => info.topicNumber === this.topicInfo.number)
+    console.log(this.recips)
     const weightSize = window.innerWidth
     if (weightSize > 1600) {
       return this.sidebar = true
@@ -89,10 +89,20 @@ export default {
   width: 100%;
 }
 
+
 .main-container{
   width: 100%;
   margin: 30px;
   display: flex;
+  flex-direction: column;
+}
+
+.recip-contents {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 40px;
 }
 
 

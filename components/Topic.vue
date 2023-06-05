@@ -35,6 +35,7 @@ export default {
       title: '',
       points: '',
       topic: [],
+      recip: [],
       // swiperOptions: {
       //   centeredSlides: true,
         // speed: 1000,
@@ -54,22 +55,21 @@ export default {
   },
   async mounted() {
     const topic = await this.$content('topicGroup').fetch()
+    const recip = await this.$content('sweetsModal').fetch()
     console.log(topic)
+    console.log(recip)
     // 作成順とかに並び替えたい
-    this.topic = topic
+    // this.topic = topic
     this.topic = topic.sort(this.compareCreatedDate)
+    this.recip = recip
     console.log(this.topic)
   },
   methods:{
     goTopic(info) {
-    // this.recipInfo = {
-    //   img: path,
-    //   title: 'パウンドケーキ',
-    //   ingredients: '材料',
-    //   energy: '栄養素'
-    // }
+
       this.topicInfo = info
       this.$store.commit('topic/setTopicInfo', this.topicInfo)
+      this.$store.commit('recip/setRecipInfo', this.recip)
       this.$router.push('/topic')
     },
     onSwiperRedied (swiper) {

@@ -97,20 +97,7 @@ methods:{
       // when the modal has hidden
       this.$refs['my-modal'].toggle('#toggle-btn')
   },
-  // goRecip(path) {
-  //   this.recipInfo = {
-  //     img: path,
-  //     title: 'パウンドケーキ',
-  //     ingredients: '材料',
-  //     energy: '栄養素'
-  //   }
   goRecip(recipInfo) {
-    // this.recipInfo = {
-    //   img: path,
-    //   title: 'パウンドケーキ',
-    //   ingredients: '材料',
-    //   energy: '栄養素'
-    // }
     this.$store.commit('recip/setRecipInfo', recipInfo)
     console.log(recipInfo)
     this.$router.push('/recip')
