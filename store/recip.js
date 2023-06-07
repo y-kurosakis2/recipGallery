@@ -5,6 +5,7 @@ export const state = () => ({
   title: undefined,
   img: undefined,
   recipInfo: [],
+  topicRecipInfo: [],
 })
 
 export const getters = {
@@ -17,12 +18,19 @@ export const getters = {
   recipInfo: (state) => {
     return state.recipInfo
   },
+  topicRecipInfo: (state) => {
+    return state.topicRecipInfo
+  },
 }
 
 export const mutations = {
   setRecipInfo(state, recipInfo) {
     console.log("aaa")
     state.recipInfo = recipInfo
+  },
+  setTopicRecipInfo(state, topicRecipInfo) {
+    state.topicRecipInfo = topicRecipInfo
+    console.log(topicRecipInfo)
   },
 
 }

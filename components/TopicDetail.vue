@@ -1,5 +1,5 @@
 <template>
-  <div class="recip">
+  <div class="topic-detail">
 
     <div class="page">
       <header-tab />
@@ -15,7 +15,7 @@
       </div>
     </div>
 
-      <div class="main-container">
+      <div class="topic-main-container">
         <div v-for="recip in recips" :key="recip.index" class="recip-contents">
           <b-img width="500px" :src="recip.picPath" alt="image" />
           <b-card class="ingredients">
@@ -25,6 +25,7 @@
             <div class="recip-content">
             </div>
           </b-card>
+          <div class="flex-box">
           <b-card class="energy">
             <div class="recip-sub-title">
               栄養素
@@ -32,6 +33,8 @@
             <div class="recip-content">
             </div>
           </b-card>
+          <b-button class="recip-button" @click="goRecip(recip)">レシピへ</b-button>
+        </div>
         </div>
       </div>
   </div>
@@ -58,23 +61,31 @@ export default {
 
   mounted() {
     const topicInfo = this.$store.state.topic.topicInfo
-    const recipInfo = this.$store.state.recip.recipInfo
+    const recipInfo = this.$store.state.recip.topicRecipInfo
     this.topicInfo = topicInfo
     console.log(this.topicInfo)
-    this.recips = recipInfo.filter((info) => info.topicNumber === this.topicInfo.number)
+    // this.recips = recipInfo.filter((info) => info.topicNumber === this.topicInfo.number)
+    this.recips = recipInfo
     console.log(this.recips)
     const weightSize = window.innerWidth
     if (weightSize > 1600) {
       return this.sidebar = true
     }
     return this.sidebar = false
+  },
+
+  methods:{
+    goRecip(recip) {
+      this.$store.commit('recip/setRecipInfo', recip)
+      this.$router.push('/recip')
+    }
   }
 }
 
 </script>
 
 <style>
-.recip {
+.topic-detail {
   width: 100%;
   height: 100vh;
   background-image: url('/img/dot2.png');
@@ -90,7 +101,7 @@ export default {
 }
 
 
-.main-container{
+.topic-main-container{
   width: 100%;
   margin: 30px;
   display: flex;
@@ -98,7 +109,7 @@ export default {
 }
 
 .recip-contents {
-  width: 100%;
+  width: 94%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -136,6 +147,7 @@ export default {
 
 .ingredients {
   width: 30%;
+  margin-left: 40px;
   margin: 20px;
   border: dotted;
   border-color: #f5d9d9;
@@ -144,11 +156,12 @@ export default {
 }
 
 .energy {
-  width: 20%;
+  width: auto;
   margin: 20px;
   border-color: #f5d9d9;
   border-width: 2px;
   border-radius: 2rem;
+  height: 220px;
 }
 
 .yokoretsu{
@@ -188,6 +201,20 @@ export default {
 .recip-content {
   margin: 10px;
   font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.flex-box {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  justify-content: space-between;
+}
+
+.recip-button {
+  width: auto;
+  margin: 0 30px 30px 30px;
+  height: 20%;
+  min-height: 30px;
 }
 
 

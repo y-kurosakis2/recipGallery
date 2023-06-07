@@ -36,21 +36,6 @@ export default {
       points: '',
       topic: [],
       recip: [],
-      // swiperOptions: {
-      //   centeredSlides: true,
-        // speed: 1000,
-        // spaceBetween: 30,
-        // navigation: {
-        //   nextEl:  '.swiper-button-next',
-        //   prevEl: '.swiper-button-prev'
-        // }
-        // loop: true,
-        // autoplay: {
-        //   delay: 5000,
-        //   disableOnInteraction: false
-        // }
-      // }
-
     }
   },
   async mounted() {
@@ -66,20 +51,10 @@ export default {
   },
   methods:{
     goTopic(info) {
-
       this.topicInfo = info
       this.$store.commit('topic/setTopicInfo', this.topicInfo)
-      this.$store.commit('recip/setRecipInfo', this.recip)
+      this.$store.commit('recip/setTopicRecipInfo', this.recip.filter((recip) => recip.topicNumber === this.topicInfo.number))
       this.$router.push('/topic')
-    },
-    onSwiperRedied (swiper) {
-      console.log('Swiper redied!', swiper)
-    },
-    onSwiperSlideChangeTransitionStart () {
-      console.log('SwiperSlideChangeTransitionStart!')
-    },
-    onSwiperClickSlide (index, reallyIndex) {
-      console.log('Swiper click slide!', reallyIndex)
     },
     compareCreatedDate(a, b) {
       if (a.number > b.number) {
