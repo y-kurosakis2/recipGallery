@@ -1,0 +1,10 @@
+{
+    "files.autoSave": "off",
+    // ファイル保存時、コードを整形する
+    "editor.formatOnSave": true,
+    // ファイル保存時、同時に行われるアクション
+    "editor.codeActionsOnSave": {
+	// 拡張機能Prettierのチェックを走らせる
+	    "source.fixAll.prettier": true
+    },
+}

@@ -1,8 +1,13 @@
 <template>
   <transition>
   <div class="home">
-    <home-title />
-    <div class="topAnimation">
+    <div v-if="!notFirstPage">
+      <home-title />
+      <div class="topAnimation">
+        <top />
+      </div>
+    </div>
+    <div v-else class="topNonAnimation">
       <top />
     </div>
     <!-- <b-button variant="secondary" class="skip" @click="skip">skip</b-button> -->
@@ -22,10 +27,21 @@ export default {
   },
   data() {
     return {
+      notFirstPage: true,
       // title: ['W','e','l','c','o','m','e','   ','t','o',' ','s','w','e',],
       // apple: ['apple', 'banana', 'pain']
  
     }
+  },
+  mounted(){
+    this.notFirstPage = this.$store.state.page.notFirstPage
+    console.log(this.notFirstPage)
+    if(this.notFirstPage) {
+      this.notFirstPage = true
+    } else {
+      this.notFirstPage = false
+    }
+    console.log(this.notFirstPage)
   },
   method: {
     // skip() {
@@ -55,6 +71,15 @@ export default {
   animation: fadeIn 3s ease-in-out;
   animation-delay: 5s;
   animation-fill-mode: forwards;
+}
+
+.topNonAnimation {
+  width: 100%;
+  background-image: url('/img/dot.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fceaea;
+  background-attachment: fixed;
 }
 
 .skip {

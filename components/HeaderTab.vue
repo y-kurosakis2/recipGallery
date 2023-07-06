@@ -1,7 +1,7 @@
 <template>
   <div>
   <b-navbar toggleable="lg" style="color: brown;" class="nav" >
-    <b-navbar-brand href="/" class="tab-name">なしのお菓子部屋</b-navbar-brand>
+    <b-navbar-brand class="tab-name" @click="goHome">なしのお菓子部屋</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -58,6 +58,11 @@ export default {
       // title: ['W','e','l','c','o','m','e','   ','t','o',' ','s','w','e',],
       // apple: ['apple', 'banana', 'pain']
  
+    }
+  },
+  methods:{
+    goHome() {
+      this.$router.push('/')
     }
   }
 }

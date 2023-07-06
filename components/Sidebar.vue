@@ -4,14 +4,10 @@
       <div class="px-3 py-2">
       <p>特集</p>
     </div>
-      
     </b-sidebar>
-      
   </div>
-  
 </template>
 <script>
-
 
 </script>
 

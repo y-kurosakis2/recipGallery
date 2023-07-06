@@ -47,13 +47,13 @@ export default {
     }
   },
 
-  computed: {
-    recipInfo() {
-      return this.$store.state.recip.recipInfo
-    }
-  },
+  // computed: {
+  //   recipInfo() {
+  //     return this.$store.state.recip.recipInfo
+  //   }
+  // },
   mounted() {
-    
+    this.$store.commit('page/setNotFirstPage', true)
     this.recipInfo = this.$store.state.recip.recipInfo
     console.log(this.recipInfo)
     // id = this.recipInfo.id

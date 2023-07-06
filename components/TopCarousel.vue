@@ -20,7 +20,7 @@
       img-width="380"
       class="carousel-center">
       <div v-for="image, index in images1" :key="index">
-        <b-carousel-slide :img-src="image" rounded background="white">
+        <b-carousel-slide :img-src="image" rounded>
         </b-carousel-slide>
       </div>
     </b-carousel>

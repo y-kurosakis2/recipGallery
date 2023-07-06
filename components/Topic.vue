@@ -13,7 +13,7 @@
         class="slide-topic">
         <div v-for="top in topic" :key="top.index">
           <div @click="goTopic(top)" >
-            <b-carousel-slide :img-src="top.picPath" />
+            <b-carousel-slide :img-src="top.picPath" class="topic-pic" />
           </div>
         </div>
       </b-carousel>
@@ -154,6 +154,15 @@ export default {
   width: 800px;
 }
 
+.topic-pic {
+  width: 100%;
+  border-radius: 3%;
+}
+
+img {
+  border-radius: 4%;
+  border: solid white;
+}
 
 
 </style>

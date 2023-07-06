@@ -60,6 +60,7 @@ export default {
   },
 
   mounted() {
+    this.$store.commit('page/setNotFirstPage', true)
     const topicInfo = this.$store.state.topic.topicInfo
     const recipInfo = this.$store.state.recip.topicRecipInfo
     this.topicInfo = topicInfo
